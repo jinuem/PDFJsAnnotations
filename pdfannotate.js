@@ -1,6 +1,6 @@
 /**
  * PDFAnnotate v1.0.0
- * Author: Ravisha Heshan
+ * Author: Ravisha Heshan 
  */
 
 var PDFAnnotate = function(container_id, url) {
@@ -57,7 +57,8 @@ var PDFAnnotate = function(container_id, url) {
 	                width: 1,
 	                color: inst.color
 	            }
-	        });
+			});
+
 	        inst.fabricObjects.push(fabricObj);
 	        fabricObj.setBackgroundImage(background, fabricObj.renderAll.bind(fabricObj));
 	        $(fabricObj.upperCanvasEl).click(function (event) {
