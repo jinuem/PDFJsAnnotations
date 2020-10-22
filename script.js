@@ -1,4 +1,11 @@
-var pdf = new PDFAnnotate('pdf-container', 'http://pdftest.test/pdf.pdf');
+var pdf = new PDFAnnotate('pdf-container', 'pdf.pdf', {
+    onPageUpdated(page, oldData, newData) {
+        console.log(page, oldData, newData);
+    },
+    ready() {
+        console.log('Plugin initialized successfully');
+    }
+});
 
 function enableSelector(event) {
     event.preventDefault();
@@ -30,6 +37,16 @@ function enableAddArrow(event) {
     $('.tool-button.active').removeClass('active');
     $(element).addClass('active');
     pdf.enableAddArrow();
+}
+
+function enableRectangle(event) {
+    event.preventDefault();
+    var element = ($(event.target).hasClass('tool-button')) ? $(event.target) : $(event.target).parents('.tool-button').first();
+    $('.tool-button.active').removeClass('active');
+    $(element).addClass('active');
+    pdf.setColor('rgba(255, 0, 0, 0.3)');
+    pdf.setBorderColor('blue');
+    pdf.enableRectangle();
 }
 
 function deleteSelectedObject() {
